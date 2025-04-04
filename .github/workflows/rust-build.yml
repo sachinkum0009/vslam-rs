@@ -16,7 +16,16 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt update && sudo apt install -y llvm-dev clang libclang-dev
+          sudo apt update
+          sudo apt install -y llvm-dev clang libclang-dev cmake ninja-build pkg-config libopencv-dev
+
+      - name: Set Environment Variables for Clang and OpenCV
+        run: |
+          echo "LLVM_CONFIG_PATH=$(which llvm-config)" >> $GITHUB_ENV
+          echo "LIBCLANG_PATH=$(llvm-config --libdir)" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig" >> $GITHUB_ENV
+          echo "OPENCV_INCLUDE_PATH=/usr/include/opencv4" >> $GITHUB_ENV
+
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
