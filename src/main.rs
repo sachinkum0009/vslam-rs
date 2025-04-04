@@ -5,7 +5,7 @@ use opencv::core::AlgorithmHint;
 use opencv::prelude::*;
 
 fn main() {
-    let image_path = "../image/automobile_test_resized.jpg";
+    let image_path = "../image/automobile_test.jpg";
     let image = imgcodecs::imread(image_path, imgcodecs::IMREAD_COLOR).expect("Failed to read image");
 
     if image.empty() {
@@ -13,8 +13,8 @@ fn main() {
         panic!("Image not found or unable to open");
     }
 
-    // let mut gray_image = Mat::default();
-    // opencv::imgproc::cvt_color(&image, &mut gray_image, opencv::imgproc::COLOR_BGR2GRAY, 0, AlgorithmHint::ALGO_HINT_DEFAULT).expect("Failed to convert image to grayscale");
+    let mut gray_image = Mat::default();
+    opencv::imgproc::cvt_color(&image, &mut gray_image, opencv::imgproc::COLOR_BGR2GRAY, 0, AlgorithmHint::ALGO_HINT_DEFAULT).expect("Failed to convert image to grayscale");
 
     let mut resized_image = Mat::default();
     opencv::imgproc::resize(&image, &mut resized_image, opencv::core::Size::new((image.cols() / 2).into(), (image.rows() / 2).into()), 0.0, 0.0, opencv::imgproc::INTER_LINEAR).expect("Failed to resize image");
