@@ -8,3 +8,7 @@ opencv = "0.94.4"
 
 [profile.release]
 opt-level = 3
+
+[[bin]]
+name = "main"
+path = "bin/main.rs"
