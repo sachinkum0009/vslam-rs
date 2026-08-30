@@ -1,4 +1,4 @@
-use opencv::core::{Mat, MatTrait, MatTraitConst};
+use opencv::core::{Mat, MatTraitConst};
 use opencv::{Error, imgcodecs};
 
 pub struct Image {
