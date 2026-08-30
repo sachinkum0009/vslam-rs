@@ -20,3 +20,7 @@ target/
 
 /target
 *.code-workspace
+
+# image outputs
+image/automobile_test_gray.jpg
+image/automobile_test_resized.jpg
